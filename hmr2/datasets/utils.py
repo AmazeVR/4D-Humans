@@ -8,7 +8,7 @@ from skimage.transform import rotate, resize
 from skimage.filters import gaussian
 import random
 import cv2
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Union
 from yacs.config import CfgNode
 
 def expand_to_aspect_ratio(input_shape, target_aspect_ratio=None):
@@ -524,7 +524,7 @@ def smpl_param_processing(smpl_params: Dict, has_smpl_params: Dict, rot: float, 
 
 
 
-def get_example(img_path: str|np.ndarray, center_x: float, center_y: float,
+def get_example(img_path: Union[str,np.ndarray], center_x: float, center_y: float,
                 width: float, height: float,
                 keypoints_2d: np.array, keypoints_3d: np.array,
                 smpl_params: Dict, has_smpl_params: Dict,

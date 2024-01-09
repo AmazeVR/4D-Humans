@@ -42,11 +42,11 @@ class HMR2Predictor(HMR2018Predictor):
             'mask': (x[:,3,:,:]).clip(0,1),
         }
         model_out = self.model(batch)
-        out = hmar_out | {
+        hmar_out.update({
             'pose_smpl': model_out['pred_smpl_params'],
             'pred_cam': model_out['pred_cam'],
-        }
-        return out
+        })
+        return hmar_out
     
 class HMR2023TextureSampler(HMR2Predictor):
     def __init__(self, cfg) -> None:
